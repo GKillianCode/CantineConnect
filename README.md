@@ -8,6 +8,10 @@
 
 ---
 
+Lien vers le repo contenant le code de l'application : [https://github.com/GKillianCode/CantineConnectApp](https://github.com/GKillianCode/CantineConnectApp)
+
+---
+
 ## À l'attention des Recruteurs & Tech Leads (Pourquoi ce Lab ?)
 
 Ce projet dépasse le simple cadre d'un CRUD traditionnel. Il s'agit de mon **laboratoire personnel** configuré pour résoudre des problématiques d'ingénierie concrètes du monde de l'entreprise :
