@@ -1,0 +1,40 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="ijqcokJE8SVhkRtMXP3p">
+    <mxGraphModel dx="2112" dy="994" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ixE6-7Z0DCg-xI6Jz-Ow-18" edge="1" parent="1" source="ixE6-7Z0DCg-xI6Jz-Ow-1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=0;strokeWidth=3;endSize=12;startSize=12;endArrow=open;endFill=0;" target="ixE6-7Z0DCg-xI6Jz-Ow-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ixE6-7Z0DCg-xI6Jz-Ow-19" edge="1" parent="1" source="ixE6-7Z0DCg-xI6Jz-Ow-1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=0;strokeWidth=3;endSize=12;startSize=12;endArrow=open;endFill=0;" target="ixE6-7Z0DCg-xI6Jz-Ow-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ixE6-7Z0DCg-xI6Jz-Ow-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=3;" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;Cantine Connect Backend&lt;/font&gt;" vertex="1">
+          <mxGeometry height="190" width="230" x="180" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="ixE6-7Z0DCg-xI6Jz-Ow-20" edge="1" parent="1" source="ixE6-7Z0DCg-xI6Jz-Ow-1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.532;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;curved=0;strokeWidth=3;endSize=12;startSize=12;endArrow=open;endFill=0;" target="ixE6-7Z0DCg-xI6Jz-Ow-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ixE6-7Z0DCg-xI6Jz-Ow-13" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=18;container=0;" value="&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Domaine : Pure Java (DDD)&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Algorithme FEPS&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Event Consumer (MealBookedEvent)&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;" vertex="1">
+          <mxGeometry height="110" width="210" x="480" y="206" as="geometry" />
+        </mxCell>
+        <mxCell id="ixE6-7Z0DCg-xI6Jz-Ow-14" parent="1" style="swimlane;whiteSpace=wrap;html=1;container=0;strokeWidth=2;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;&lt;font&gt;Module 2 : inventory&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="140" width="200" x="490" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ixE6-7Z0DCg-xI6Jz-Ow-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=18;" value="&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Domaine : Pure Java (DDD)&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Contraintes J-2 &amp;amp; PAI&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;API REST&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;" vertex="1">
+          <mxGeometry height="110" width="210" x="-50" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="ixE6-7Z0DCg-xI6Jz-Ow-9" parent="1" style="swimlane;whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;&lt;font&gt;Module 1 : booking&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="140" width="200" x="-40" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ixE6-7Z0DCg-xI6Jz-Ow-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=18;" value="&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Traitement : Spring Batch&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Agrégation présences &amp;amp; Quotient Familiale&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Export comptable CSV / XML&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;" vertex="1">
+          <mxGeometry height="110" width="210" x="90" y="646" as="geometry" />
+        </mxCell>
+        <mxCell id="ixE6-7Z0DCg-xI6Jz-Ow-17" parent="1" style="swimlane;whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;&lt;font&gt;Module 3 : billing&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="140" width="200" x="100" y="640" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
