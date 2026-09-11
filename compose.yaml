@@ -1,1 +1,16 @@
-services: {}
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: cantineconnect-db
+    environment:
+      MYSQL_DATABASE: cantine_connect
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: cantine_user
+      MYSQL_PASSWORD: cantine_password
+    ports:
+      - "3307:3307"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
