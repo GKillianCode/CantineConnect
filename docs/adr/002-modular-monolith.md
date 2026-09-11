@@ -10,7 +10,7 @@
 
 ---
 
-# 1. Adoption d'un Monolithe Modulaire
+# Adoption d'un Monolithe Modulaire
 
 ## Contexte
 Le système CantineConnect gère plusieurs domaines fonctionnels distincts (`booking`, `inventory`, `billing`).
