@@ -1,0 +1,24 @@
+# Declare that this is the root configuration file
+root = true
+
+# Global settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Java files
+[*.java]
+indent_style = space
+indent_size = 4
+
+# Configuration and build files (YAML, XML, JSON, Markdown)
+[*.{yml,yaml,xml,json,md,properties}]
+indent_style = space
+indent_size = 2
+
+# Shell / Dockerfile
+[*.sh]
+indent_style = space
+indent_size = 2
