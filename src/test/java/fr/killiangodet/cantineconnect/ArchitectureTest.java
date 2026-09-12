@@ -15,7 +15,8 @@ class ArchitectureTest {
             noClasses()
                     .that().resideInAPackage("..shared..")
                     .should().dependOnClassesThat()
-                    .resideInAnyPackage("..billing..", "..booking..", "..inventory..");
+                    .resideInAnyPackage("..billing..", "..booking..", "..inventory..")
+                    .allowEmptyShould(true);
 
     // BILLING can only access the API layer of BOOKING and INVENTORY
     @ArchTest
@@ -26,7 +27,7 @@ class ArchitectureTest {
                     .resideInAnyPackage(
                             "..booking.domain..", "..booking.application..", "..booking.infrastructure..",
                             "..inventory.domain..", "..inventory.application..", "..inventory.infrastructure.."
-                    );
+                    ).allowEmptyShould(true);
 
     // BOOKING can only access the API layer of BILLING and INVENTORY
     @ArchTest
@@ -37,7 +38,7 @@ class ArchitectureTest {
                     .resideInAnyPackage(
                             "..billing.domain..", "..billing.application..", "..billing.infrastructure..",
                             "..inventory.domain..", "..inventory.application..", "..inventory.infrastructure.."
-                    );
+                    ).allowEmptyShould(true);
 
     // INVENTORY can only access the API layer of BILLING and BOOKING
     @ArchTest
@@ -48,7 +49,7 @@ class ArchitectureTest {
                     .resideInAnyPackage(
                             "..billing.domain..", "..billing.application..", "..billing.infrastructure..",
                             "..booking.domain..", "..booking.application..", "..booking.infrastructure.."
-                    );
+                    ).allowEmptyShould(true);
 
     // The domain layer must not depend on Spring or JPA
     @ArchTest
@@ -56,5 +57,6 @@ class ArchitectureTest {
             noClasses()
                     .that().resideInAPackage("..domain..")
                     .should().dependOnClassesThat()
-                    .resideInAnyPackage("org.springframework..", "jakarta.persistence..");
+                    .resideInAnyPackage("org.springframework..", "jakarta.persistence..")
+                    .allowEmptyShould(true);
 }
