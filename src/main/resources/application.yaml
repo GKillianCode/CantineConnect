@@ -1,6 +1,11 @@
 spring:
   application:
     name: CantineConnect
+  profiles:
+    active: dev
+  output:
+    ansi:
+      enabled: ALWAYS
 
   datasource:
     url: jdbc:mysql://localhost:3307/cantine_connect?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
