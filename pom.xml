@@ -72,6 +72,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.15</version>
+          <scope>compile</scope>
+        </dependency>
+
         <!-- DB -->
         <dependency>
             <groupId>com.mysql</groupId>
@@ -140,7 +147,28 @@
               <artifactId>maven-surefire-plugin</artifactId>
               <configuration>
                 <argLine>-XX:+EnableDynamicAgentLoading</argLine>
+                <argLine>@{argLine}</argLine>
               </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.jacoco</groupId>
+              <artifactId>jacoco-maven-plugin</artifactId>
+              <executions>
+                <!-- 1. Attaches the JaCoCo agent to the JUnit runner during the test phase -->
+                <execution>
+                  <goals>
+                    <goal>prepare-agent</goal>
+                  </goals>
+                </execution>
+                <!-- 2. Generates the HTML/XML report just after the tests execution -->
+                <execution>
+                  <id>report</id>
+                  <phase>test</phase>
+                  <goals>
+                    <goal>report</goal>
+                  </goals>
+                </execution>
+              </executions>
             </plugin>
         </plugins>
     </build>
