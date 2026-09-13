@@ -40,6 +40,7 @@
             <version>3.1.0</version>
         </dependency>
 
+        <!-- Tools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-docker-compose</artifactId>
@@ -50,6 +51,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.6.3</version>
+          <scope>compile</scope>
         </dependency>
 
         <!-- Test -->
@@ -167,6 +174,30 @@
                   <goals>
                     <goal>report</goal>
                   </goals>
+                </execution>
+              </executions>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-enforcer-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>enforce-java-and-maven</id>
+                  <goals>
+                    <goal>enforce</goal>
+                  </goals>
+                  <configuration>
+                    <rules>
+                      <requireJavaVersion>
+                        <version>[21,)</version>
+                        <message>Error: The CantineConnect project strictly requires Java 21 or later!</message>
+                      </requireJavaVersion>
+                      <requireMavenVersion>
+                        <version>[3.8.7,)</version>
+                        <message>Error: Maven 3.8.7 or later is required for this project!</message>
+                      </requireMavenVersion>
+                    </rules>
+                  </configuration>
                 </execution>
               </executions>
             </plugin>
