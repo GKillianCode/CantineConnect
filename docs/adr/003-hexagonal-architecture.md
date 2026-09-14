@@ -2,7 +2,7 @@
 
 | Métadonnée | Valeur                                          |
 | :--- |:------------------------------------------------|
-| **Référence** | `docs/adr/002-modular-monolith.md`                       |
+| **Référence** | `docs/adr/003-hexagonal-architecture.md`              |
 | **Statut** | Validé                                          |
 | **Date** | 10 septembre 2026                               |
 | **Auteur** | Killian GODET                                   |
