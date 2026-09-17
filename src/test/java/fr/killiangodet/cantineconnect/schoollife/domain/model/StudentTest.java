@@ -75,7 +75,7 @@ class StudentTest {
     void shouldThrowExceptionWhenDeclaringPaiWithNullAllergies() {
         Student student = Student.register(StudentId.generate(), "Robert", "Kiyosaki");
 
-        assertThatThrownBy(() -> student.declarePai((Set<Allergy>) null))
+        assertThatThrownBy(() -> student.declarePai(null))
             .isInstanceOf(InvalidStudentDataException.class)
             .hasMessage("student.pai.allergies.null");
     }
