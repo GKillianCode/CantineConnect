@@ -1,6 +1,5 @@
 package fr.killiangodet.cantineconnect.shared.exception;
 
-import fr.killiangodet.cantineconnect.billing.infrastructure.rest.BillingControllerTest;
 import fr.killiangodet.cantineconnect.shared.application.exception.ApplicationException;
 import fr.killiangodet.cantineconnect.shared.domain.exception.DomainException;
 import jakarta.validation.Valid;
@@ -29,13 +28,12 @@ class GlobalExceptionHandlerTest {
 
     @BeforeEach
     void setUp() {
-        // Initialisation manuelle du validateur pour le mode standalone
         LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
         validator.afterPropertiesSet();
 
         this.mockMvc = MockMvcBuilders.standaloneSetup(new TestController())
             .setControllerAdvice(new GlobalExceptionHandler())
-            .setValidator(validator) // Activateur de l'annotation @Valid
+            .setValidator(validator)
             .build();
     }
 

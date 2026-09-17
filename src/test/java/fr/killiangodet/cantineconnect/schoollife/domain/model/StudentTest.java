@@ -1,5 +1,6 @@
 package fr.killiangodet.cantineconnect.schoollife.domain.model;
 
+import fr.killiangodet.cantineconnect.schoollife.domain.exception.InvalidStudentDataException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,8 +31,8 @@ class StudentTest {
         StudentId studentId = StudentId.generate();
 
         assertThatThrownBy(() -> Student.register(studentId, "   ", "Kiyosaki"))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("The pupil’s first name cannot be left blank.");
+            .isInstanceOf(InvalidStudentDataException.class)
+            .hasMessage("student.firstname.blank");
     }
 
     @Test
@@ -40,8 +41,8 @@ class StudentTest {
         StudentId studentId = StudentId.generate();
 
         assertThatThrownBy(() -> Student.register(studentId, "Robert", ""))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("The pupil’s last name cannot be left blank.");
+            .isInstanceOf(InvalidStudentDataException.class)
+            .hasMessage("student.lastname.blank");
     }
 
     @Test
@@ -65,8 +66,8 @@ class StudentTest {
         Student student = Student.register(StudentId.generate(), "Robert", "Kiyosaki");
 
         assertThatThrownBy(() -> student.declarePai(Set.of()))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("An Individualised Action Plan (PAI) must include at least one allergy.");
+            .isInstanceOf(InvalidStudentDataException.class)
+            .hasMessage("student.pai.allergies.empty");
     }
 
     @Test
@@ -75,8 +76,8 @@ class StudentTest {
         Student student = Student.register(StudentId.generate(), "Robert", "Kiyosaki");
 
         assertThatThrownBy(() -> student.declarePai((Set<Allergy>) null))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("The list of allergies cannot be null.");
+            .isInstanceOf(InvalidStudentDataException.class)
+            .hasMessage("student.pai.allergies.null");
     }
 
     @Test

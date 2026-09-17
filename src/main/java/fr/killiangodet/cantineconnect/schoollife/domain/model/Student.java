@@ -1,10 +1,10 @@
 package fr.killiangodet.cantineconnect.schoollife.domain.model;
 
+import fr.killiangodet.cantineconnect.schoollife.domain.exception.InvalidStudentDataException;
 import lombok.Getter;
 
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -17,10 +17,13 @@ public final class Student {
     private Set<Allergy> allergies;
 
     private Student(StudentId id, String firstName, String lastName) {
+        if (id == null) {
+            throw new InvalidStudentDataException("student.id.mandatory");
+        }
         validateFirstName(firstName);
         validateLastName(lastName);
 
-        this.id = Objects.requireNonNull(id, "Student ID is mandatory.");
+        this.id = id;
         this.firstName = firstName.trim();
         this.lastName = lastName.trim();
         this.hasPai = false;
@@ -33,10 +36,10 @@ public final class Student {
 
     public void declarePai(Set<Allergy> allergies) {
         if (allergies == null) {
-            throw new IllegalArgumentException("The list of allergies cannot be null.");
+            throw new InvalidStudentDataException("student.pai.allergies.null");
         }
         if (allergies.isEmpty()) {
-            throw new IllegalArgumentException("An Individualised Action Plan (PAI) must include at least one allergy.");
+            throw new InvalidStudentDataException("student.pai.allergies.empty");
         }
 
         this.hasPai = true;
@@ -50,13 +53,13 @@ public final class Student {
 
     private void validateFirstName(String firstName) {
         if (firstName == null || firstName.isBlank()) {
-            throw new IllegalArgumentException("The pupil’s first name cannot be left blank.");
+            throw new InvalidStudentDataException("student.firstname.blank");
         }
     }
 
     private void validateLastName(String lastName) {
         if (lastName == null || lastName.isBlank()) {
-            throw new IllegalArgumentException("The pupil’s last name cannot be left blank.");
+            throw new InvalidStudentDataException("student.lastname.blank");
         }
     }
 
