@@ -5,6 +5,10 @@ import fr.killiangodet.cantineconnect.shared.application.exception.ApplicationEx
 import fr.killiangodet.cantineconnect.shared.domain.exception.DomainException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -22,6 +26,20 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+    private final MessageSource messageSource;
+
+    @Autowired
+    public GlobalExceptionHandler(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
+
+    public GlobalExceptionHandler() {
+        ResourceBundleMessageSource defaultMessageSource = new ResourceBundleMessageSource();
+        defaultMessageSource.setBasename("messages");
+        defaultMessageSource.setDefaultEncoding("UTF-8");
+        defaultMessageSource.setUseCodeAsDefaultMessage(true);
+        this.messageSource = defaultMessageSource;
+    }
 
     @ExceptionHandler(ApplicationException.class)
     public ProblemDetail handleApplicationException(ApplicationException ex, HandlerMethod handlerMethod) {
@@ -30,7 +48,7 @@ public class GlobalExceptionHandler {
 
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(
             HttpStatus.NOT_FOUND,
-            ex.getMessage()
+            messageSource.getMessage(ex.getMessage(), null, LocaleContextHolder.getLocale())
         );
         problem.setTitle("Resource Not Found");
         problem.setProperty("module", moduleName);
@@ -45,7 +63,7 @@ public class GlobalExceptionHandler {
 
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(
             HttpStatus.UNPROCESSABLE_CONTENT,
-            ex.getMessage()
+            messageSource.getMessage(ex.getMessage(), null, LocaleContextHolder.getLocale())
         );
         problem.setTitle("Business Rule Violation");
         problem.setProperty("module", moduleName);
