@@ -11,6 +11,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
-        configurer.addPathPrefix("/api/v1", HandlerTypePredicate.forAnnotation(RestController.class));
+        configurer.addPathPrefix("/api/v1", config ->
+                config.isAnnotationPresent(RestController.class)
+                        && config.getPackage().getName().matches("fr\\.killiangodet\\.cantineconnectv2\\..*\\.controller")
+        );
     }
 }
