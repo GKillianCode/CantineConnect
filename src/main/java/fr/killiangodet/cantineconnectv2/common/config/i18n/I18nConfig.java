@@ -1,4 +1,4 @@
-package fr.killiangodet.cantineconnectv2.common.i18n;
+package fr.killiangodet.cantineconnectv2.common.config.i18n;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
