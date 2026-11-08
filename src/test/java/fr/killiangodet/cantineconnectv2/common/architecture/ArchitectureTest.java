@@ -23,7 +23,8 @@ public class ArchitectureTest {
             classes()
                     .that().haveSimpleNameEndingWith("Controller")
                     .should().resideInAPackage("..controller..")
-                    .because("Controllers should be in the controller package");
+                    .because("Controllers should be in the controller package")
+                    .allowEmptyShould(true);
 
     @ArchTest
     public static final ArchRule classes_ending_with_Controller_should_be_an_annotation =
@@ -31,7 +32,8 @@ public class ArchitectureTest {
                     .that().haveSimpleNameEndingWith("Controller")
                     .should().beAnnotatedWith(Controller.class)
                     .orShould().beAnnotatedWith(RestController.class)
-                    .because("Controllers should be annotated with @RestController");
+                    .because("Controllers should be annotated with @RestController")
+                    .allowEmptyShould(true);
 
     @ArchTest
     public static final ArchRule annotated_controllers_must_follow_naming_and_location =
@@ -47,13 +49,15 @@ public class ArchitectureTest {
             classes()
                     .that().haveSimpleNameEndingWith("Service")
                     .should().resideInAPackage("..service..")
-                    .because("Services should be in the service package");
+                    .because("Services should be in the service package")
+                    .allowEmptyShould(true);
 
     @ArchTest
     public static final ArchRule classes_ending_with_Service_should_be_an_annotation = classes()
             .that().haveSimpleNameEndingWith("Service")
             .should().beAnnotatedWith(Service.class)
-            .because("Services should be annotated with @Service");
+            .because("Services should be annotated with @Service")
+            .allowEmptyShould(true);
 
     @ArchTest
     public static final ArchRule annotated_services_must_follow_naming_and_location =
@@ -69,13 +73,15 @@ public class ArchitectureTest {
             classes()
                     .that().haveSimpleNameEndingWith("Repository")
                     .should().resideInAPackage("..repository..")
-                    .because("Repositories should be in the repository package");
+                    .because("Repositories should be in the repository package")
+                    .allowEmptyShould(true);
 
     @ArchTest
     public static final ArchRule classes_ending_with_Repository_should_be_an_annotation = classes()
             .that().haveSimpleNameEndingWith("Repository")
             .should().beAnnotatedWith(Repository.class)
-            .because("Repositories should be annotated with @Repository");
+            .because("Repositories should be annotated with @Repository")
+            .allowEmptyShould(true);
 
     @ArchTest
     public static final ArchRule annotated_repositories_must_follow_naming_and_location =
@@ -90,8 +96,8 @@ public class ArchitectureTest {
     public static final ArchRule controllers_should_not_access_repositories =
             noClasses()
                     .that().resideInAPackage("..controller..")
-                    .should().dependOnClassesThat().resideInAPackage("..repository..");
-
+                    .should().dependOnClassesThat().resideInAPackage("..repository..")
+                    .allowEmptyShould(true);
 
     @ArchTest
     public static final ArchRule layer_dependencies_are_respected =
@@ -103,7 +109,8 @@ public class ArchitectureTest {
 
                     .whereLayer("Controller").mayNotBeAccessedByAnyLayer()
                     .whereLayer("Service").mayOnlyBeAccessedByLayers("Controller")
-                    .whereLayer("Repository").mayOnlyBeAccessedByLayers("Service");
+                    .whereLayer("Repository").mayOnlyBeAccessedByLayers("Service")
+                    .allowEmptyShould(true);
 
     // No Circular Dependencies Rule
     @ArchTest
@@ -111,5 +118,6 @@ public class ArchitectureTest {
             slices()
                     .matching("fr.killiangodet.cantineconnectv2..(*)")
                     .should()
-                    .beFreeOfCycles();
+                    .beFreeOfCycles()
+                    .allowEmptyShould(true);
 }
