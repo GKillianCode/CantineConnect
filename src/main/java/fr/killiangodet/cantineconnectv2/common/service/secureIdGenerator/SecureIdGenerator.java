@@ -7,6 +7,19 @@ public class SecureIdGenerator implements idGenerator {
 
     @Override
     public String generate(String prefix, int nbParts, int partLength) {
+
+        if (prefix == null || prefix.isEmpty()) {
+            throw new IllegalArgumentException("Prefix cannot be null or empty");
+        }
+
+        if  (nbParts <= 0) {
+            throw new IllegalArgumentException("Number of parts must be greater than 0");
+        }
+
+        if   (partLength <= 0) {
+            throw new IllegalArgumentException("Part length must be greater than 0");
+        }
+
         final String characters = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789";
         final char separator = '-';
         StringBuilder sb = new StringBuilder();
