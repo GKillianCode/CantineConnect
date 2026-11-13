@@ -121,6 +121,7 @@
             <version>2.7.0</version>
             <scope>compile</scope>
         </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -217,5 +218,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
