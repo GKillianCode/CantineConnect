@@ -8,7 +8,7 @@ public class PublicIdGenerator {
 
     SecureIdGenerator secureIdGenerator;
 
-    PublicIdGenerator(SecureIdGenerator secureIdGenerator) {
+    public PublicIdGenerator(SecureIdGenerator secureIdGenerator) {
         this.secureIdGenerator = secureIdGenerator;
     }
 
