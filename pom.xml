@@ -114,6 +114,13 @@
             <version>${jakarta.persistence.version}</version>
         </dependency>
 
+        <!-- Test database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <!-- Dev dependencies -->
         <dependency>
             <groupId>net.datafaker</groupId>
