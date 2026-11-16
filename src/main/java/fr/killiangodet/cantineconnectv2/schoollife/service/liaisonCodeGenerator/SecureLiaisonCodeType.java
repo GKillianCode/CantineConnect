@@ -16,4 +16,22 @@ public enum SecureLiaisonCodeType {
         this.partLength = partLength;
     }
 
+    public boolean isValidFormat(String liaisonCode) {
+        if (liaisonCode == null || !liaisonCode.startsWith(prefix)) {
+            return false;
+        }
+
+        String[] parts = liaisonCode.substring(prefix.length()).split("-");
+        if (parts.length != nbPart) {
+            return false;
+        }
+
+        for (String part : parts) {
+            if (part.length() != partLength) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
