@@ -1,11 +1,10 @@
 package fr.killiangodet.cantineconnectv2.common.fixtures;
 
 import fr.killiangodet.cantineconnectv2.common.service.publicIdGenerator.PublicIdGenerator;
-import fr.killiangodet.cantineconnectv2.common.service.publicIdGenerator.PublicIdType;
-import fr.killiangodet.cantineconnectv2.schoollife.entity.Student;
+import fr.killiangodet.cantineconnectv2.schoollife.repository.LegalGuardianRepository;
+import fr.killiangodet.cantineconnectv2.schoollife.repository.StudentLegalGuardianRepository;
 import fr.killiangodet.cantineconnectv2.schoollife.repository.StudentRepository;
 import fr.killiangodet.cantineconnectv2.schoollife.service.liaisonCodeGenerator.SecureLiaisonCodeGenerator;
-import fr.killiangodet.cantineconnectv2.schoollife.service.liaisonCodeGenerator.SecureLiaisonCodeType;
 import net.datafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -18,43 +17,33 @@ public class DataFixtureConfig {
 
     @Bean
     public CommandLineRunner loadData(
+            StudentRepository studentRepository,
+            LegalGuardianRepository legalGuardianRepository,
+            StudentLegalGuardianRepository studentLegalGuardianRepository,
             PublicIdGenerator publicIdGenerator,
-            SecureLiaisonCodeGenerator secureLiaisonCodeGenerator,
-            StudentRepository studentRepository
+            SecureLiaisonCodeGenerator secureLiaisonCodeGenerator
     ) {
         return args -> {
-            Faker faker = new Faker();
-
             System.out.println("Data fixtures clear started...");
-            clearDataFixtures(studentRepository);
+            clearDataFixtures(studentRepository, legalGuardianRepository);
             System.out.println("Data fixtures clear completed.");
 
             System.out.println("Data fixtures load started...");
-            generateRandomStudent(faker, publicIdGenerator, secureLiaisonCodeGenerator, studentRepository);
+            System.out.println("// Schoollife fixtures");
+            SchoollifeFixtureConfig schoollifeFixture = new SchoollifeFixtureConfig(
+                    studentRepository,
+                    legalGuardianRepository,
+                    studentLegalGuardianRepository,
+                    publicIdGenerator,
+                    secureLiaisonCodeGenerator
+            );
+            schoollifeFixture.loadDataFixtures();
             System.out.println("Data fixtures load completed.");
         };
     }
 
-    public void clearDataFixtures(StudentRepository studentRepository) {
+    public void clearDataFixtures(StudentRepository studentRepository, LegalGuardianRepository legalGuardianRepository) {
         studentRepository.deleteAll();
+        legalGuardianRepository.deleteAll();
     }
-
-    public void generateRandomStudent(
-            Faker faker,
-            PublicIdGenerator publicIdGenerator,
-            SecureLiaisonCodeGenerator secureLiaisonCodeGenerator,
-            StudentRepository studentRepository
-    ) {
-        for (int i = 0; i < 10; i++) {
-            Student student = new Student(
-                    publicIdGenerator.generate(PublicIdType.STUDENT),
-                    faker.name().firstName(),
-                    faker.name().lastName(),
-                    faker.timeAndDate().birthday(),
-                    secureLiaisonCodeGenerator.generate(SecureLiaisonCodeType.LINK)
-            );
-            studentRepository.save(student);
-        }
-    }
-
 }
