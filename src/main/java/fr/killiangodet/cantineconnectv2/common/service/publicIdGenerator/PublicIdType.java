@@ -4,7 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum PublicIdType {
-    STUDENT("STD", 3, 4);
+    STUDENT("STD", 3, 4),
+    LEGAL_GUARDIAN("LG", 3, 4);
 
     private final String prefix;
     private final int nbPart;
