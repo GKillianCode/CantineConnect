@@ -1,15 +1,18 @@
 package fr.killiangodet.cantineconnectv2.schoollife.entity;
 
+import fr.killiangodet.cantineconnectv2.common.entity.AuditableEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Getter
 @Entity
 @Table(name = "student")
-public class Student {
+@Getter
+@Setter
+public class Student extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
